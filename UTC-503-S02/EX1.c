@@ -9,8 +9,9 @@ int main (int argc, char* argv[])
 
     if (n != 0)
     {
-        do {
-            i = i - 1;
+        do 
+        {            
+            i--;
             factorielle = factorielle * i;
         }
         while (i > 1);
