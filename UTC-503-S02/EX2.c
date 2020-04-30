@@ -7,11 +7,9 @@ int main (int argc, char* argv[])
 	int factorielle = n;
 	int i = n ;
 
-    while (i > 1)
+    for (i=n; i>1; i--)
     {
         factorielle = factorielle * (i-1);
-		i = (i-1);    
-        
     }
      printf ("La factorielle de %d est = %d\n", n, factorielle);
     return EXIT_SUCCESS;
