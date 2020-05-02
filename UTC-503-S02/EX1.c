@@ -12,7 +12,7 @@ int main (int argc, char* argv[])
         do 
         {            
             i--;
-            factorielle = factorielle * i;
+            factorielle *= i;
         }
         while (i > 1);
     }
