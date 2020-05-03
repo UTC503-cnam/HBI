@@ -3,23 +3,15 @@
 
 int main (int argc, char* argv[]) 
 {
-    	int n = 5;
-	int factorielle = n;
+    int n = 5;
+	int factorielle = 1;
 	int i = n;
 
-    if (n != 0)
-    {
-        do 
-        {            
-            i--;
-            factorielle *= i;
-        }
-        while (i > 1);
-    }
-    else
-    {
-        factorielle = 0;
-    }
-    printf ("La factorielle de %d est = %d\n", n, factorielle);
+    start:
+        factorielle = factorielle * i;
+        i = i - 1;
+        if (i > 0)
+    goto start;
+    printf("La factorielle de %d = %d\n", n, factorielle);
     return EXIT_SUCCESS;
 }
