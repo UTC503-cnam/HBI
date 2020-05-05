@@ -10,9 +10,9 @@ void factorielle (int n)
   }
   printf ("Factorielle de %d = %d\n", n, fact);  
 }
- int main (int argc, char* argv[])
+ void main ()
 {
   factorielle (5);
-  return EXIT_SUCCESS;
+
 }
   
