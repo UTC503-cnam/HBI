@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main (int argc, char* argv[]) 
+void main () 
 {
     int n = 5;
 	int factorielle = 1;
@@ -13,5 +13,5 @@ int main (int argc, char* argv[])
         if (i > 0)
     goto start;
     printf("La factorielle de %d = %d\n", n, factorielle);
-    return EXIT_SUCCESS;
+    
 }
