@@ -1,22 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void factorielle (int n)
+int factorielle (int n)
 {
-	int factorielle = 1;
-	int i = n;
+  if (n == 0)
+  return 0;
+  if (n == 1)
+  return 1;
+  return n * factorielle (n - 1);
 
-    star_fact:
-        factorielle = factorielle * i;
-        i = i - 1;
-        if (i > 0)
-    goto star_fact;
-    printf("La factorielle de %d = %d\n", n, factorielle); 
 }
-
- int main (int argc, char* argv[])
+ int main ()
 {
-  factorielle (5);
-  return EXIT_SUCCESS;
+  int f = 5;
+  printf ("La factorielle de %d = %d\n", 5, factorielle (7));  
 }
-  
