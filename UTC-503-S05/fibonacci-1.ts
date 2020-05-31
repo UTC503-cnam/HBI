@@ -1,4 +1,5 @@
-interface Iterateur<T>{
+interface Iterateur<T>
+{
     aUnSuivant(): boolean;
     suivant(): T;
 }
