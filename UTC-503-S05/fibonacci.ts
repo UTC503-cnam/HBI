@@ -3,17 +3,45 @@ interface Iterateur<T>{
     suivant(): T;
 }
 
-class Fibonacci {
-    // fibonacci(n) = fibonnacci(n-1) + fibonnacci(n-2)
+class Fibonacci implements Iterateur <number> {
+
+    private nb_max : number;
+    private nb_current : number;
+    private nb_min_1 : number;
+    private nb_min_2 : number;
+
+    constructor (nb_max : number)
+        {
+            this.nb_max = nb_max;
+            this.nb_current = 0;
+            this.nb_min_1 = 1;
+            this.nb_min_2 = 0;
+        }
+
+    aUnSuivant () : boolean 
+        {
+            return this.nb_current < this.nb_max;
+        }
+    suivant () : number 
+        {
+            let current; 
+            if (this.nb_current < 2)
+                {
+                    current = this.nb_current;
+                }
+            else
+                {
+                    current = this.nb_min_1 + this.nb_min_2;
+                    this.nb_min_2 = this.nb_min_1;
+                    this.nb_min_1 = current ;
+                }
+            this.nb_current ++;
+            return current;
+        }
 }
 
-// Affiche les 10 premiers éléments de la suite de Fibonacci :
-// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34,
-// Fin (*)
-f = new Fibonacci(10); // (**)
-while(f.aUnSuivant()){
-    console.log(`${f.suivant()},`);
-}
-
-// (*)  Ex2 : l'observeur affiche 'Fin' à la fin de la série
-// (**) Ex3 : remplacer ce code par une initialisation par Singleton
+let f = new Fibonacci(10);
+while (f.aUnSuivant())
+    {
+        console.log(`${f.suivant()},`);
+    }
