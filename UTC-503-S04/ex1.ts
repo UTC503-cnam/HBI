@@ -1,62 +1,39 @@
-interface Mesurable 
-{
-    length: number;
-}
-
-class Trajet implements Mesurable 
-{
-    private nom: string;
-    length : number;
-
-    constructor (nom : string, lenght : number)
-        {
-            this.nom = nom;
-            this.length = lenght;
-         }
-    toString(): string 
-        {
-            return `Trajet ${this.nom} de ${this.length}Km`;
+var Trajet = /** @class */ (function () {
+    function Trajet(nom, lenght) {
+        this.nom = nom;
+        this.length = lenght;
+    }
+    Trajet.prototype.toString = function () {
+        return "Trajet " + this.nom + " de " + this.length + "Km";
+    };
+    return Trajet;
+}());
+var MinMax = /** @class */ (function () {
+    function MinMax(t) {
+        this.Min = t[0];
+        this.Max = t[0];
+        this.computeMinMax(t);
+    }
+    MinMax.prototype.computeMinMax = function (t) {
+        for (var _i = 0, t_1 = t; _i < t_1.length; _i++) {
+            var e = t_1[_i];
+            this.Min = e.length < this.Min.length ? e : this.Min;
+            this.Max = e.length > this.Max.length ? e : this.Max;
         }
-}
-
-class MinMax <T extends Mesurable> {
-    private min : T;
-    private max : T;
-     
-    constructor(t:Array <T>)
-        {
-            this.min = t[0];
-            this.max = t[0];
-            this.computeMinMax(t);
-        }
-
-    private computeMinMax(t: Array<T>)
-        {
-            for(let e of t)
-            {
-                this.min = e.length < this.min.length?e:this.min;
-                this.max = e.length > this.max.length?e:this.max;
-
-            }
-        }
-
-    getMin(): T
-        {
-            return this.min ;
-        }
-
-    getMax() : T
-        {
-            return this.max ;
-        }
-}
-
-let trajets: Array<Trajet> = new Array(new Trajet("a", 271), new Trajet("b", 161), new Trajet("c", 314));
-let trajetMinMax = new MinMax (trajets);
-console.log(`Le plus grand trajet est : ${trajetMinMax.getMax()}`);
-console.log(`Le plus petit trajet est : ${trajetMinMax.getMin()}`);
-
-let chaines: Array = new Array("chaineDe9", "chDe5", "grandeChaineDe16");
-let chaineMinMax = new MinMax (chaines);
-console.log(`La plus grande chaine est : ${chaineMinMax.getMax()}`);
-console.log(`La plus petite chaine est : ${chaineMinMax.getMin()}`);
+    };
+    MinMax.prototype.getMin = function () {
+        return this.Min;
+    };
+    MinMax.prototype.getMax = function () {
+        return this.Max;
+    };
+    return MinMax;
+}());
+var trajets = new Array(new Trajet("a", 271), new Trajet("b", 161), new Trajet("c", 314));
+var trajetMinMax = new MinMax(trajets);
+console.log("Le plus grand trajet est : " + trajetMinMax.getMax());
+console.log("Le plus petit trajet est : " + trajetMinMax.getMin());
+var chaines = new Array("chaineDe9", "chDe5", "grandeChaineDe16");
+var chaineMinMax = new MinMax(chaines);
+console.log("La plus grande chaine est : " + chaineMinMax.getMax());
+console.log("La plus petite chaine est : " + chaineMinMax.getMin());
