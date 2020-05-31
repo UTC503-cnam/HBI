@@ -1,68 +1,84 @@
-abstract class Figure {
-    private nbCote: number;
-    protected tailleCote: number;
+abstract class Figure 
+{
+ private nb_cote : number; //nbre de coté
+ protected cote : number; // longueur coté 
 
-    constructor(nbCote: number, tailleCote: number){
-        this.nbCote = nbCote;
-        this.tailleCote = tailleCote;
+ /*public A : number; // hauteur triangle
+ public Diagonale1 : number; //longueur Diagonale 1
+ public Diagonale2 : number; //longueur Diagonale 2
+ public Aire : number; 
+ public Perimetre : Number;
+ public TypeFigure : string;
+ public t_Triangle : boolean; //type figure
+ public t_Losange : boolean; //type figure*/
+
+  constructor ( nb_cote : number, cote : number) 
+    {
+      this.nb_cote = nb_cote;
+      this.cote = cote;
+    }
+  abstract Aire ();
+  perimetre () 
+    {
+      return this.nb_cote * this.cote;
     }
 
-    perimetre(){
-        return this.nbCote * this.tailleCote;
-    }
-
-    abstract aire();
-
-    rapport(){
-        return `Aire: ${this.aire()}, Perimetre: ${this.perimetre()}`
-    }
-}
-
-class Triangle extends Figure {
-
-    constructor(tailleCote: number){
-        super(3, tailleCote);
-    }
-
-    aire(){
-        return Math.pow(this.tailleCote, 2) * Math.pow(3, 0.5) / 4;
-    }
-
-    rapport(){
-        return "Triangle, " + super.rapport(); 
+  donnes ()
+    {
+      return (`Aire = ${this.Aire()}, Périmètre = ${this.perimetre()}`);
     }
 }
 
-class Losange extends Figure {
+class Triangle extends Figure 
+{
+  constructor (cote : number) 
+  {
+    super (3, cote);
+  }
+  Aire ()
+  {
+    return Math.pow(this.cote, 2) * Math.pow(3, 0.5) / 4;
+  }
+  donnes ()
+  {
+    return "Type de figure = Triangle" + super donnes();
+  }
+}
 
-    private diag1: number;
-    private diag2: number;
-    
-    constructor(diag1: number, diag2: number){
-        super(4, Math.pow(Math.pow(diag1 / 2, 2) + Math.pow(diag2 / 2, 2), 0.5));
-        this.diag1 = diag1;
-        this.diag2 = diag2;
-    }
+class Losange extends Figure 
+{
+  d1 : number;
+  d2 : Number;
+  constructor (d1 : number, d2 : number) 
+  {
+    super(4, Math.pow(Math.pow(d1 / 2, 2) + Math.pow(d2 / 2, 2), 0.5));
+    this.d1 = d1;
+    this.d2 = d2;
+  }
+  carre ()
+  {
+    return this.d1 == this.d2;
+  }
 
-    estUnCarre(){
-        return this.diag1 == this.diag2;
-    }
+  Aire ()
+  {
+    return this.d1 * this.d2 / 2;
+  }
 
-    aire(){
-        return this.diag1 * this.diag2 / 2;
-    }
-
-    rapport(){
-        return "Losange, " + super.rapport(); 
-    }
+  donnes () 
+  {
+    return "Type de figure = Losange" + super donnes();
+  }
 }
 
 let t1 = new Triangle(5);
 let t2 = new Triangle(10);
-let l1 = new Losange(5, 6); // diagonale1, diagonale2
+let l1 = new Losange(5, 6);
 let l2 = new Losange(4, 4);
 
 let figures:Figure[] = [t1, t2, l1, l2];
-for(let f of figures){
-    console.log(f.rapport());
+for(let f of figures)
+{
+  console.log(f.donnes());
 }
+  
