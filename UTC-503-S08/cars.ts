@@ -6,46 +6,13 @@ class Car {
         }
 }
 
-function maxPrice(cars: Car[]): number {
-    let maxPrice: number = 0;
-    for(let i= 0; i < cars.length; i++){
-        if (cars[i].price > maxPrice){
-            maxPrice = cars[i].price;
-        }
-    }
-    return maxPrice;
-}
+let maxPrice = cars => cars.reduce((maxPrice, car) => car.price > maxPrice ? car.price : maxPrice, 0);
 
-function minPrice(cars: Car[]): number {
-    let minPrice: number = Number.MAX_VALUE;
-    for(let i= 0; i < cars.length; i++){
-        if (cars[i].price < minPrice){
-            minPrice = cars[i].price;
-        }
-    }
-    return minPrice;
-}
+let minPrice = cars => cars.reduce((minPrice, car) => car.price < minPrice ? car.price : minPrice, Number.MAX_VALUE);
 
-function averagePrice(cars: Car[]): number {
-    let total: number = 0;
-    let nbCars: number = cars.length;
-    for(let i= 0; i < cars.length; i++){
-        total += cars[i].price;
-    }
-    return total / nbCars;
-}
+let averagePrice = cars => cars.reduce((total, car) => total + car.price, 0) / cars.length;
 
-function averagePriceByBrand(cars: Car[], brand: string): number {
-    let total: number = 0;
-    let nbBrandCars: number = 0;
-    for(let i= 0; i < cars.length; i++){
-        if (cars[i].brand === brand){
-            nbBrandCars ++;
-            total += cars[i].price;
-        }
-    }
-    return total / nbBrandCars;
-}
+let averagePriceByBrand = cars => brand => averagePrice(cars.filter(car => car.brand === brand));
 
 let cars: Car[] = [new Car('Renault', 'Twizy', 7540), 
                    new Car('Alfa Romeo', 'Mito', 15490),
@@ -60,4 +27,4 @@ let cars: Car[] = [new Car('Renault', 'Twizy', 7540),
 console.log('Max price: ' + maxPrice(cars));
 console.log('Min price: ' + minPrice(cars));
 console.log('Average price: ' + averagePrice(cars));
-console.log('Average price for Porsche: ' + averagePriceByBrand(cars, 'Porsche'));
+console.log('Average price for Porsche: ' + averagePriceByBrand(cars)('Porsche'));
