@@ -1,16 +1,13 @@
-    
-/* facts from the family tree of the Stark family. */
-/* parent(X, Y) is true when X is the parent of Y. */
 parent(rickard_stark,		edwyle_stark).
 parent(brandon_stark_snr,	rickard_stark).
-parent(ned_stark,		rickard_stark).		/* ned = eddard */ 
+parent(ned_stark,		rickard_stark).
 parent(benjen_stark,		rickard_stark).
 parent(lyanna_stark,		rickard_stark).
 parent(jon_snow,		ned_stark).
 parent(rob_stark,		ned_stark).
 parent(sansa_stark,		ned_stark).
 parent(arya_stark,		ned_stark).
-parent(bran_stark,		ned_stark).		/* bran = brandon jnr */ 
+parent(bran_stark,		ned_stark).	
 parent(rickon_stark,		ned_stark).		
 parent(rob_stark,		catelyn_tully).
 parent(sansa_stark,		catelyn_tully).
@@ -18,7 +15,7 @@ parent(arya_stark,		catelyn_tully).
 parent(bran_stark,		catelyn_tully).
 parent(rickon_stark,		catelyn_tully).
 
-/* facts from the family tree of the Lannister family */
+
 parent(tywin_lannister,		tytos_lannister).
 parent(kevan_lannister,		tytos_lannister).
 parent(tygett_lannister,	tytos_lannister).
@@ -60,13 +57,11 @@ parent(willem_frey,		cleos_frey).
 parent(tywin_frey,		jeyne_darry).
 parent(willem_frey,		jeyne_darry).
 
-/* females among Stark family */
 female(lyanna_stark).
 female(catelyn_tully).
 female(sansa_stark).
 female(arya_stark).
 
-/* females among Lannister family */
 female(joanna_lannister).
 female(gerion_lannister).
 female(genna_lannister).
@@ -78,7 +73,6 @@ female(darlessa_marbrand).
 female(joy_hill).
 female(jeyne_darry).
 
-/* males among Stark family */
 male(edwyle_stark).
 male(rickard_stark).
 male(brandon_stark_snr).
@@ -89,7 +83,6 @@ male(rob_stark).
 male(bran_stark).
 male(rickon_stark).
 
-/* males among Lannister family */
 male(tytos_lannister).
 male(tywin_lannister).
 male(kevan_lannister).
